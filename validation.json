@@ -1,0 +1,74 @@
+{
+  "models": 12,
+  "triangles": 2444,
+  "checks": [
+    "finite geometry",
+    "valid vertex/UV/normal indices",
+    "non-degenerate triangles",
+    "normals consistent with winding",
+    "material and texture references"
+  ],
+  "unity_editor_validation": "pending installation",
+  "results": [
+    {
+      "model": "Bench",
+      "triangles": 156,
+      "status": "valid"
+    },
+    {
+      "model": "Crate",
+      "triangles": 108,
+      "status": "valid"
+    },
+    {
+      "model": "DoorFrame",
+      "triangles": 72,
+      "status": "valid"
+    },
+    {
+      "model": "Door_17",
+      "triangles": 284,
+      "status": "valid"
+    },
+    {
+      "model": "Flashlight",
+      "triangles": 396,
+      "status": "valid"
+    },
+    {
+      "model": "Floor_3m",
+      "triangles": 12,
+      "status": "valid"
+    },
+    {
+      "model": "Fuse",
+      "triangles": 120,
+      "status": "valid"
+    },
+    {
+      "model": "FuseBox",
+      "triangles": 276,
+      "status": "valid"
+    },
+    {
+      "model": "Locker",
+      "triangles": 252,
+      "status": "valid"
+    },
+    {
+      "model": "Pipe",
+      "triangles": 612,
+      "status": "valid"
+    },
+    {
+      "model": "WallLamp",
+      "triangles": 108,
+      "status": "valid"
+    },
+    {
+      "model": "Wall_3m",
+      "triangles": 48,
+      "status": "valid"
+    }
+  ]
+}

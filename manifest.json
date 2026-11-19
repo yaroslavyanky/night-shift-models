@@ -1,0 +1,115 @@
+{
+  "units": "metres",
+  "up": "Y",
+  "texture_size": 512,
+  "assets": [
+    {
+      "name": "Floor_3m",
+      "triangles": 12,
+      "bounds_m": [
+        3.0,
+        0.16,
+        3.0
+      ]
+    },
+    {
+      "name": "Wall_3m",
+      "triangles": 48,
+      "bounds_m": [
+        3.0,
+        2.8,
+        0.21
+      ]
+    },
+    {
+      "name": "DoorFrame",
+      "triangles": 72,
+      "bounds_m": [
+        1.43,
+        2.295,
+        0.262
+      ]
+    },
+    {
+      "name": "Door_17",
+      "triangles": 284,
+      "bounds_m": [
+        1.124,
+        2.08,
+        0.18
+      ]
+    },
+    {
+      "name": "Locker",
+      "triangles": 252,
+      "bounds_m": [
+        0.62,
+        1.85,
+        0.552
+      ]
+    },
+    {
+      "name": "FuseBox",
+      "triangles": 276,
+      "bounds_m": [
+        0.58,
+        0.96,
+        0.24
+      ]
+    },
+    {
+      "name": "Bench",
+      "triangles": 156,
+      "bounds_m": [
+        1.6,
+        0.95,
+        0.51
+      ]
+    },
+    {
+      "name": "Pipe",
+      "triangles": 612,
+      "bounds_m": [
+        0.283,
+        2.57,
+        0.289
+      ]
+    },
+    {
+      "name": "WallLamp",
+      "triangles": 108,
+      "bounds_m": [
+        0.48,
+        0.19,
+        0.134
+      ]
+    },
+    {
+      "name": "Flashlight",
+      "triangles": 396,
+      "bounds_m": [
+        0.1,
+        0.1,
+        0.279
+      ]
+    },
+    {
+      "name": "Fuse",
+      "triangles": 120,
+      "bounds_m": [
+        0.029,
+        0.07,
+        0.03
+      ]
+    },
+    {
+      "name": "Crate",
+      "triangles": 108,
+      "bounds_m": [
+        0.64,
+        0.5,
+        0.555
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+newmtl plaster
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/plaster.png
+
+newmtl paint
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/paint.png
+
+newmtl rust
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/rust.png
+
+newmtl wood
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/wood.png
+
+newmtl rubber
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/rubber.png
+
+newmtl steel
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/steel.png
+
+newmtl glass
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/glass.png
+
+newmtl tile
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/tile.png
+
+newmtl warning
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/warning.png
+
+newmtl number
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/number.png
