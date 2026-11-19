@@ -8,6 +8,7 @@ ASSETS=ROOT/'Assets'/'NightShift'
 R=random.Random(1704)
 N=np.random.default_rng(1704)
 COLORS={'plaster':(139,142,123),'paint':(72,94,82),'rust':(101,66,45),'wood':(102,77,52),'rubber':(33,37,36),'steel':(135,145,139),'glass':(191,204,164),'tile':(114,115,99),'warning':(184,155,67),'number':(185,179,150)}
+COLORS.update({'porcelain':(152,153,131),'red':(115,39,28),'paper':(182,172,142),'cloth':(69,72,62),'bone':(157,150,119),'warningstripe':(176,144,58),'exit':(40,92,70),'screen':(23,49,42)})
 TEXTURES={}
 font_path='/System/Library/Fonts/Supplemental/Arial Bold.ttf'
 def font(n):
@@ -45,6 +46,19 @@ for name,color in COLORS.items():
     if name=='number':
         d.rectangle((10,10,501,501),outline=(56,61,52),width=12)
         d.text((256,255),'17',font=font(270),anchor='mm',fill=(36,43,36))
+    if name=='warningstripe':
+        for x in range(-s,s*2,160):d.polygon([(x,0),(x+80,0),(x-s+80,s),(x-s,s)],fill=(27,31,26))
+    if name=='cloth':
+        for x in range(4,s,5):d.line((x,0,x,s),fill=(60,64,55),width=1)
+        for y in range(6,s,11):d.line((0,y,s,y),fill=(63,65,57),width=1)
+        for x in [28,480]:
+            d.line((x,0,x,s),fill=(38,43,34),width=3)
+            for y in range(0,s,18):d.line((x-4,y,x+4,y+7),fill=(120,119,94),width=1)
+    if name=='paper':
+        for y in range(100,420,46):d.line((55,y,450,y),fill=(90,91,75),width=7)
+    if name=='exit':
+        d.rectangle((12,12,500,500),outline=(190,209,164),width=12)
+        d.text((256,256),'ВЫХОД',font=font(95),anchor='mm',fill=(212,224,183))
     im.save(ASSETS/'Textures'/f'{name}.png');TEXTURES[name]=np.array(im)
 
 class Mesh:
@@ -133,6 +147,9 @@ for x in [-.26,.26]:
     for z in [-.25,.25]:m.box((x,.25,z),(.07,.5,.035),'wood')
 for y in [.06,.44]:m.box((0,y,.26),(.64,.06,.035),'rust');m.box((0,y,-.26),(.64,.06,.035),'rust')
 
+exec((ROOT/'Tools'/'extra_models.py').read_text(), globals())
+exec((ROOT/'Tools'/'street_models.py').read_text(), globals())
+
 mtl=[]
 for name in COLORS:
     mtl += [f'newmtl {name}','Ka 0.1 0.1 0.1','Kd 1 1 1','Ks 0.05 0.05 0.05','Ns 8',f'map_Kd ../Textures/{name}.png','']
@@ -176,7 +193,7 @@ def render(meshes,w=640,h=600):
 labels=['Плиточный пол · 3 м','Стена · 3 м','Дверная коробка','Дверь квартиры 17','Металлический шкафчик','Электрощиток','Скамейка','Труба с вентилем','Защищённый светильник','Карманный фонарь','Предохранитель','Деревянный ящик']
 sheet=Image.new('RGB',(1600,1470),(20,25,24));d=ImageDraw.Draw(sheet)
 d.text((38,25),'НОЧНОЙ ОБХОД',font=font(38),fill=(218,222,204));d.text((38,75),'Набор окружения / 12 моделей / исходная геометрия',font=font(20),fill=(144,157,146))
-for i,m in enumerate(models):
+for i,m in enumerate(models[:12]):
     x=(i%4)*400;y=130+(i//4)*440
     sheet.paste(render([m],390,350),(x+5,y));d.text((x+20,y+360),labels[i],font=font(18),fill=(212,218,202));d.text((x+20,y+390),f'{stats[i]["triangles"]} треугольников',font=font(15),fill=(137,155,143))
 sheet.save(ROOT/'Preview'/'asset-sheet.jpg',quality=94)
@@ -184,4 +201,23 @@ sheet.save(ROOT/'Preview'/'asset-sheet.jpg',quality=94)
 lookup={m.name:m for m in models}
 scene=[lookup['Floor_3m'],lookup['Wall_3m'].moved((0,0,-1.5)),lookup['Wall_3m'].moved((-1.5,0,0),90),lookup['Locker'].moved((-.9,0,-1.18)),lookup['FuseBox'].moved((.75,1.15,-1.29)),lookup['Bench'].moved((-.9,0,.2),90),lookup['Pipe'].moved((1.3,0,-1.25)),lookup['WallLamp'].moved((.5,2.5,-1.35)),lookup['Crate'].moved((.9,0,.7))]
 render(scene,1400,1200).save(ROOT/'Preview'/'room-corner.png')
-print(json.dumps({'models':len(models),'triangles':sum(s['triangles'] for s in stats),'previews':2}))
+print(json.dumps({'models':len(models),'triangles':sum(s['triangles'] for s in stats),'previews':5}))
+
+# Expansion contact sheet and a larger character preview.
+extra=Image.new('RGB',(1600,130+5*440),(20,25,24));d=ImageDraw.Draw(extra)
+d.text((38,25),'НОЧНОЙ ОБХОД / РАСШИРЕНИЕ',font=font(36),fill=(218,222,204))
+d.text((38,77),'18 новых моделей · GLB для Godot · исходная геометрия',font=font(20),fill=(144,157,146))
+for i,m in enumerate(models[12:30]):
+    x=(i%4)*400;y=130+(i//4)*440
+    extra.paste(render([m],390,350),(x+5,y));d.text((x+20,y+360),EXTRA_LABELS[i],font=font(18),fill=(212,218,202));d.text((x+20,y+390),str(stats[i+12]['triangles'])+' треугольников',font=font(15),fill=(137,155,143))
+extra.save(ROOT/'Preview'/'expansion-sheet.jpg',quality=93)
+render([lookup['Watcher']],900,1200).save(ROOT/'Preview'/'watcher.png')
+exec((ROOT/'Tools'/'export_glb.py').read_text(),globals())
+
+street=Image.new('RGB',(1600,130+5*440),(20,25,24));d=ImageDraw.Draw(street)
+d.text((38,25),'НОЧНОЙ ОБХОД / УЛИЦА И БОЛЬНИЦА',font=font(34),fill=(218,222,204))
+d.text((38,77),'Ещё 18 моделей · GLB для Godot',font=font(20),fill=(144,157,146))
+for i,m in enumerate(models[30:]):
+    x=(i%4)*400;y=130+(i//4)*440
+    street.paste(render([m],390,350),(x+5,y));d.text((x+20,y+360),STREET_LABELS[i],font=font(18),fill=(212,218,202));d.text((x+20,y+390),str(stats[i+30]['triangles'])+' треугольников',font=font(15),fill=(137,155,143))
+street.save(ROOT/'Preview'/'street-sheet.jpg',quality=93)

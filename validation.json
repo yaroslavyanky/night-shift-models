@@ -1,14 +1,17 @@
 {
-  "models": 12,
-  "triangles": 2444,
+  "models": 48,
+  "triangles": 19664,
+  "format": "glTF 2.0 binary + OBJ",
   "checks": [
-    "finite geometry",
-    "valid vertex/UV/normal indices",
-    "non-degenerate triangles",
-    "normals consistent with winding",
-    "material and texture references"
+    "GLB chunk and buffer layout",
+    "accessor counts and bounds",
+    "finite values",
+    "unit normals",
+    "triangle winding and nonzero area",
+    "embedded PNG integrity",
+    "OBJ/GLB triangle parity"
   ],
-  "unity_editor_validation": "pending installation",
+  "godot_editor_validation": "not run; Godot is not installed",
   "results": [
     {
       "model": "Bench",
@@ -16,8 +19,38 @@
       "status": "valid"
     },
     {
+      "model": "Bollard",
+      "triangles": 168,
+      "status": "valid"
+    },
+    {
+      "model": "BrokenWindow",
+      "triangles": 96,
+      "status": "valid"
+    },
+    {
+      "model": "BusShelter",
+      "triangles": 332,
+      "status": "valid"
+    },
+    {
+      "model": "CRTMonitor",
+      "triangles": 132,
+      "status": "valid"
+    },
+    {
+      "model": "ConcreteBarrier",
+      "triangles": 52,
+      "status": "valid"
+    },
+    {
       "model": "Crate",
       "triangles": 108,
+      "status": "valid"
+    },
+    {
+      "model": "Desk",
+      "triangles": 132,
       "status": "valid"
     },
     {
@@ -28,6 +61,31 @@
     {
       "model": "Door_17",
       "triangles": 284,
+      "status": "valid"
+    },
+    {
+      "model": "Dumpster",
+      "triangles": 1216,
+      "status": "valid"
+    },
+    {
+      "model": "ElevatorDoors",
+      "triangles": 172,
+      "status": "valid"
+    },
+    {
+      "model": "ExitSign",
+      "triangles": 24,
+      "status": "valid"
+    },
+    {
+      "model": "Fence_3m",
+      "triangles": 752,
+      "status": "valid"
+    },
+    {
+      "model": "FireExtinguisher",
+      "triangles": 252,
       "status": "valid"
     },
     {
@@ -51,8 +109,68 @@
       "status": "valid"
     },
     {
+      "model": "Generator",
+      "triangles": 620,
+      "status": "valid"
+    },
+    {
+      "model": "Gurney",
+      "triangles": 1596,
+      "status": "valid"
+    },
+    {
+      "model": "HospitalBed",
+      "triangles": 560,
+      "status": "valid"
+    },
+    {
+      "model": "HospitalCurtain",
+      "triangles": 624,
+      "status": "valid"
+    },
+    {
+      "model": "Hydrant",
+      "triangles": 344,
+      "status": "valid"
+    },
+    {
+      "model": "IronGate",
+      "triangles": 456,
+      "status": "valid"
+    },
+    {
+      "model": "Key",
+      "triangles": 324,
+      "status": "valid"
+    },
+    {
       "model": "Locker",
       "triangles": 252,
+      "status": "valid"
+    },
+    {
+      "model": "Mailboxes",
+      "triangles": 624,
+      "status": "valid"
+    },
+    {
+      "model": "Manhole",
+      "triangles": 300,
+      "status": "valid"
+    },
+    {
+      "model": "OfficeChair",
+      "triangles": 896,
+      "status": "valid"
+    },
+    {
+      "model": "Padlock",
+      "triangles": 248,
+      "status": "valid"
+    },
+    {
+      "model": "Payphone",
+      "triangles": 660,
       "status": "valid"
     },
     {
@@ -61,13 +179,78 @@
       "status": "valid"
     },
     {
+      "model": "Radiator",
+      "triangles": 716,
+      "status": "valid"
+    },
+    {
+      "model": "RoadBarrier",
+      "triangles": 72,
+      "status": "valid"
+    },
+    {
+      "model": "SecurityCamera",
+      "triangles": 164,
+      "status": "valid"
+    },
+    {
+      "model": "Stair_3m",
+      "triangles": 576,
+      "status": "valid"
+    },
+    {
+      "model": "StreetLamp",
+      "triangles": 200,
+      "status": "valid"
+    },
+    {
+      "model": "TrafficCone",
+      "triangles": 156,
+      "status": "valid"
+    },
+    {
+      "model": "TrashBin",
+      "triangles": 180,
+      "status": "valid"
+    },
+    {
+      "model": "VendingMachine",
+      "triangles": 648,
+      "status": "valid"
+    },
+    {
+      "model": "VentCover",
+      "triangles": 260,
+      "status": "valid"
+    },
+    {
+      "model": "WallClock",
+      "triangles": 448,
+      "status": "valid"
+    },
+    {
       "model": "WallLamp",
       "triangles": 108,
       "status": "valid"
     },
     {
+      "model": "WallSink",
+      "triangles": 232,
+      "status": "valid"
+    },
+    {
       "model": "Wall_3m",
       "triangles": 48,
+      "status": "valid"
+    },
+    {
+      "model": "Watcher",
+      "triangles": 956,
+      "status": "valid"
+    },
+    {
+      "model": "Wheelchair",
+      "triangles": 2032,
       "status": "valid"
     }
   ]

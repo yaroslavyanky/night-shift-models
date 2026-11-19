@@ -110,6 +110,330 @@
         0.5,
         0.555
       ]
+    },
+    {
+      "name": "Radiator",
+      "triangles": 716,
+      "bounds_m": [
+        1.345,
+        0.622,
+        0.18
+      ]
+    },
+    {
+      "name": "FireExtinguisher",
+      "triangles": 252,
+      "bounds_m": [
+        0.287,
+        0.612,
+        0.223
+      ]
+    },
+    {
+      "name": "TrashBin",
+      "triangles": 180,
+      "bounds_m": [
+        0.68,
+        0.842,
+        0.66
+      ]
+    },
+    {
+      "name": "BrokenWindow",
+      "triangles": 96,
+      "bounds_m": [
+        1.6,
+        1.765,
+        0.34
+      ]
+    },
+    {
+      "name": "Mailboxes",
+      "triangles": 624,
+      "bounds_m": [
+        1.35,
+        1.04,
+        0.278
+      ]
+    },
+    {
+      "name": "Stair_3m",
+      "triangles": 576,
+      "bounds_m": [
+        1.494,
+        2.523,
+        3.0
+      ]
+    },
+    {
+      "name": "StreetLamp",
+      "triangles": 200,
+      "bounds_m": [
+        0.32,
+        3.993,
+        1.29
+      ]
+    },
+    {
+      "name": "RoadBarrier",
+      "triangles": 72,
+      "bounds_m": [
+        1.68,
+        0.96,
+        0.64
+      ]
+    },
+    {
+      "name": "Wheelchair",
+      "triangles": 2032,
+      "bounds_m": [
+        0.705,
+        1.002,
+        1.14
+      ]
+    },
+    {
+      "name": "Gurney",
+      "triangles": 1596,
+      "bounds_m": [
+        0.79,
+        0.96,
+        1.94
+      ]
+    },
+    {
+      "name": "Payphone",
+      "triangles": 660,
+      "bounds_m": [
+        0.43,
+        0.86,
+        0.365
+      ]
+    },
+    {
+      "name": "SecurityCamera",
+      "triangles": 164,
+      "bounds_m": [
+        0.21,
+        0.24,
+        0.568
+      ]
+    },
+    {
+      "name": "VentCover",
+      "triangles": 260,
+      "bounds_m": [
+        0.65,
+        0.5,
+        0.092
+      ]
+    },
+    {
+      "name": "Generator",
+      "triangles": 620,
+      "bounds_m": [
+        0.81,
+        0.68,
+        0.555
+      ]
+    },
+    {
+      "name": "Key",
+      "triangles": 324,
+      "bounds_m": [
+        0.041,
+        0.094,
+        0.006
+      ]
+    },
+    {
+      "name": "Padlock",
+      "triangles": 248,
+      "bounds_m": [
+        0.075,
+        0.138,
+        0.029
+      ]
+    },
+    {
+      "name": "ExitSign",
+      "triangles": 24,
+      "bounds_m": [
+        0.52,
+        0.18,
+        0.087
+      ]
+    },
+    {
+      "name": "Watcher",
+      "triangles": 956,
+      "bounds_m": [
+        1.023,
+        2.12,
+        0.441
+      ]
+    },
+    {
+      "name": "BusShelter",
+      "triangles": 332,
+      "bounds_m": [
+        3.2,
+        2.52,
+        1.45
+      ]
+    },
+    {
+      "name": "Fence_3m",
+      "triangles": 752,
+      "bounds_m": [
+        3.09,
+        2.15,
+        0.09
+      ]
+    },
+    {
+      "name": "IronGate",
+      "triangles": 456,
+      "bounds_m": [
+        1.47,
+        2.23,
+        0.128
+      ]
+    },
+    {
+      "name": "Dumpster",
+      "triangles": 1216,
+      "bounds_m": [
+        1.7,
+        1.252,
+        1.06
+      ]
+    },
+    {
+      "name": "TrafficCone",
+      "triangles": 156,
+      "bounds_m": [
+        0.39,
+        0.57,
+        0.39
+      ]
+    },
+    {
+      "name": "ConcreteBarrier",
+      "triangles": 52,
+      "bounds_m": [
+        2.0,
+        0.9,
+        0.66
+      ]
+    },
+    {
+      "name": "WallClock",
+      "triangles": 448,
+      "bounds_m": [
+        0.44,
+        0.44,
+        0.085
+      ]
+    },
+    {
+      "name": "CRTMonitor",
+      "triangles": 132,
+      "bounds_m": [
+        0.49,
+        0.42,
+        0.391
+      ]
+    },
+    {
+      "name": "Desk",
+      "triangles": 132,
+      "bounds_m": [
+        1.3,
+        0.795,
+        0.688
+      ]
+    },
+    {
+      "name": "OfficeChair",
+      "triangles": 896,
+      "bounds_m": [
+        0.603,
+        1.05,
+        0.661
+      ]
+    },
+    {
+      "name": "HospitalBed",
+      "triangles": 560,
+      "bounds_m": [
+        0.97,
+        0.995,
+        2.05
+      ]
+    },
+    {
+      "name": "ElevatorDoors",
+      "triangles": 172,
+      "bounds_m": [
+        1.785,
+        2.455,
+        0.192
+      ]
+    },
+    {
+      "name": "Manhole",
+      "triangles": 300,
+      "bounds_m": [
+        0.72,
+        0.05,
+        0.72
+      ]
+    },
+    {
+      "name": "Bollard",
+      "triangles": 168,
+      "bounds_m": [
+        0.24,
+        0.8,
+        0.24
+      ]
+    },
+    {
+      "name": "VendingMachine",
+      "triangles": 648,
+      "bounds_m": [
+        0.85,
+        1.8,
+        0.82
+      ]
+    },
+    {
+      "name": "Hydrant",
+      "triangles": 344,
+      "bounds_m": [
+        0.48,
+        0.71,
+        0.31
+      ]
+    },
+    {
+      "name": "HospitalCurtain",
+      "triangles": 624,
+      "bounds_m": [
+        1.895,
+        1.972,
+        0.5
+      ]
+    },
+    {
+      "name": "WallSink",
+      "triangles": 232,
+      "bounds_m": [
+        0.56,
+        0.595,
+        0.4
+      ]
     }
   ]
 }

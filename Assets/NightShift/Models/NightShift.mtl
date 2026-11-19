@@ -67,3 +67,59 @@ Kd 1 1 1
 Ks 0.05 0.05 0.05
 Ns 8
 map_Kd ../Textures/number.png
+
+newmtl porcelain
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/porcelain.png
+
+newmtl red
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/red.png
+
+newmtl paper
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/paper.png
+
+newmtl cloth
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/cloth.png
+
+newmtl bone
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/bone.png
+
+newmtl warningstripe
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/warningstripe.png
+
+newmtl exit
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/exit.png
+
+newmtl screen
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/screen.png
