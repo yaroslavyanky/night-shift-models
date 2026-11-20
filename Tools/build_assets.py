@@ -149,6 +149,7 @@ for y in [.06,.44]:m.box((0,y,.26),(.64,.06,.035),'rust');m.box((0,y,-.26),(.64,
 
 exec((ROOT/'Tools'/'extra_models.py').read_text(), globals())
 exec((ROOT/'Tools'/'street_models.py').read_text(), globals())
+exec((ROOT/'Tools'/'cis_models.py').read_text(), globals())
 
 mtl=[]
 for name in COLORS:
@@ -201,7 +202,7 @@ sheet.save(ROOT/'Preview'/'asset-sheet.jpg',quality=94)
 lookup={m.name:m for m in models}
 scene=[lookup['Floor_3m'],lookup['Wall_3m'].moved((0,0,-1.5)),lookup['Wall_3m'].moved((-1.5,0,0),90),lookup['Locker'].moved((-.9,0,-1.18)),lookup['FuseBox'].moved((.75,1.15,-1.29)),lookup['Bench'].moved((-.9,0,.2),90),lookup['Pipe'].moved((1.3,0,-1.25)),lookup['WallLamp'].moved((.5,2.5,-1.35)),lookup['Crate'].moved((.9,0,.7))]
 render(scene,1400,1200).save(ROOT/'Preview'/'room-corner.png')
-print(json.dumps({'models':len(models),'triangles':sum(s['triangles'] for s in stats),'previews':5}))
+print(json.dumps({'models':len(models),'triangles':sum(s['triangles'] for s in stats),'previews':7}))
 
 # Expansion contact sheet and a larger character preview.
 extra=Image.new('RGB',(1600,130+5*440),(20,25,24));d=ImageDraw.Draw(extra)
@@ -217,7 +218,21 @@ exec((ROOT/'Tools'/'export_glb.py').read_text(),globals())
 street=Image.new('RGB',(1600,130+5*440),(20,25,24));d=ImageDraw.Draw(street)
 d.text((38,25),'НОЧНОЙ ОБХОД / УЛИЦА И БОЛЬНИЦА',font=font(34),fill=(218,222,204))
 d.text((38,77),'Ещё 18 моделей · GLB для Godot',font=font(20),fill=(144,157,146))
-for i,m in enumerate(models[30:]):
+for i,m in enumerate(models[30:48]):
     x=(i%4)*400;y=130+(i//4)*440
     street.paste(render([m],390,350),(x+5,y));d.text((x+20,y+360),STREET_LABELS[i],font=font(18),fill=(212,218,202));d.text((x+20,y+390),str(stats[i+30]['triangles'])+' треугольников',font=font(15),fill=(137,155,143))
 street.save(ROOT/'Preview'/'street-sheet.jpg',quality=93)
+
+cis=Image.new('RGB',(1600,2330),(20,25,24));d=ImageDraw.Draw(cis)
+d.text((38,25),'НОЧНОЙ ОБХОД / ЗНАКОМЫЙ ДВОР',font=font(35),fill=(218,222,204))
+d.text((38,77),'20 моделей подъезда, двора и квартиры · GLB для Godot',font=font(20),fill=(144,157,146))
+for i,m in enumerate(models[48:68]):
+    x=(i%4)*400;y=130+(i//4)*440
+    cis.paste(render([m],390,350),(x+5,y));d.text((x+20,y+360),CIS_LABELS[i],font=font(18),fill=(212,218,202));d.text((x+20,y+390),str(stats[i+48]['triangles'])+' треугольников',font=font(15),fill=(137,155,143))
+cis.save(ROOT/'Preview'/'cis-sheet.jpg',quality=94)
+courtyard=Mesh('CourtyardGround');courtyard.box((0,-.1,0),(8,.2,6),'panel')
+court=[courtyard]
+for x in [-1.5,1.5]:
+    for y in [0,2.8]:court.append(lookup['CIS_PanelFacade'].moved((x,y,-2.6)))
+court += [lookup['CIS_GlazedBalcony'].moved((-1.5,2.8,-2.6)),lookup['CIS_EntrySign'].moved((2.5,2.4,-2.47)),lookup['CIS_CourtyardTable'].moved((-2,0,1)),lookup['CIS_TirePlanter'].moved((.1,0,.5)),lookup['CIS_Sandbox'].moved((1.85,0,1.3)),lookup['CIS_PullUpBars'].moved((2,0,-.9))]
+render(court,1600,1400).save(ROOT/'Preview'/'cis-courtyard.png')

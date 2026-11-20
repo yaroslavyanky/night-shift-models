@@ -1,0 +1,2064 @@
+[gd_scene load_steps=167 format=3]
+
+
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1"]
+
+[ext_resource type="Script" path="res://scripts/door.gd" id="2"]
+
+[ext_resource type="Script" path="res://scripts/yard_action.gd" id="3"]
+
+[ext_resource type="Script" path="res://scripts/garage_door.gd" id="4"]
+
+[ext_resource type="Script" path="res://scripts/level_exit.gd" id="exit"]
+
+[ext_resource type="Texture2D" path="res://assets/textures/missing-poster.png" id="poster"]
+
+[ext_resource type="PackedScene" path="res://assets/models/Bench.glb" id="5"]
+
+[ext_resource type="PackedScene" path="res://assets/models/Bollard.glb" id="6"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_ConcreteFence.glb" id="7"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_CourtyardTable.glb" id="8"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_EntranceCanopy.glb" id="9"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_EntranceDoor.glb" id="10"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_EntrySign.glb" id="11"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_Garage.glb" id="12"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_GarageDoor.glb" id="13"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_GarageDoorLeft.glb" id="14"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_GarageDoorRight.glb" id="15"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_GarageShell.glb" id="16"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_GlazedBalcony.glb" id="17"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_Intercom.glb" id="18"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_Kiosk.glb" id="19"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_NoticeBoard.glb" id="20"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_PanelFacade.glb" id="21"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_PullUpBars.glb" id="22"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_Sandbox.glb" id="23"]
+
+[ext_resource type="PackedScene" path="res://assets/models/CIS_TirePlanter.glb" id="24"]
+
+[ext_resource type="PackedScene" path="res://assets/models/Crate.glb" id="25"]
+
+[ext_resource type="PackedScene" path="res://assets/models/DoorFrame.glb" id="26"]
+
+[ext_resource type="PackedScene" path="res://assets/models/Door_17.glb" id="27"]
+
+[ext_resource type="PackedScene" path="res://assets/models/Dumpster.glb" id="28"]
+
+[ext_resource type="PackedScene" path="res://assets/models/FuseBox.glb" id="29"]
+
+[ext_resource type="PackedScene" path="res://assets/models/Mailboxes.glb" id="30"]
+
+[ext_resource type="PackedScene" path="res://assets/models/Manhole.glb" id="31"]
+
+[ext_resource type="PackedScene" path="res://assets/models/Radiator.glb" id="32"]
+
+[ext_resource type="PackedScene" path="res://assets/models/RoadBarrier.glb" id="33"]
+
+[ext_resource type="PackedScene" path="res://assets/models/StreetLamp.glb" id="34"]
+
+[ext_resource type="PackedScene" path="res://assets/models/TrafficCone.glb" id="35"]
+
+[ext_resource type="PackedScene" path="res://assets/models/WallLamp.glb" id="36"]
+
+[ext_resource type="Texture2D" path="res://assets/textures/asphalt.png" id="tex0"]
+
+[ext_resource type="Texture2D" path="res://assets/textures/soil.png" id="tex1"]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concrete.png" id="tex2"]
+
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 1
+background_color = Color(0.018, 0.025, 0.035, 1)
+background_energy_multiplier = 0.5
+ambient_light_source = 3
+ambient_light_color = Color(0.26, 0.32, 0.4, 1)
+ambient_light_energy = 0.42
+reflected_light_source = 2
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.06, 0.08, 0.1, 1)
+fog_light_energy = 0.22
+fog_density = 0.011
+
+[sub_resource type="CapsuleShape3D" id="PlayerShape"]
+radius = 0.27
+height = 1.75
+
+[sub_resource type="StandardMaterial3D" id="Grass"]
+albedo_color = Color(0.14, 0.19, 0.13, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Wall"]
+albedo_color = Color(0.32, 0.36, 0.31, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Roof"]
+albedo_color = Color(0.09, 0.12, 0.13, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="WarmWindow"]
+albedo_color = Color(0.45, 0.3, 0.13, 1)
+emission_enabled = true
+emission = Color(0.78, 0.48, 0.2, 1)
+emission_energy_multiplier = 0.65
+
+[sub_resource type="StandardMaterial3D" id="GarageShutter"]
+albedo_color = Color(0.12, 0.13, 0.13, 1)
+metallic = 0.25
+roughness = 0.75
+
+[sub_resource type="StandardMaterial3D" id="Poster"]
+albedo_texture = ExtResource("poster")
+roughness = 1.0
+cull_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="WallGrime"]
+albedo_color = Color(0.13, 0.16, 0.13, 1)
+roughness = 1.0
+
+
+[sub_resource type="StandardMaterial3D" id="Asphalt"]
+albedo_texture = ExtResource("tex0")
+uv1_triplanar = true
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+texture_filter = 2
+roughness = 1.0
+
+
+[sub_resource type="StandardMaterial3D" id="Soil"]
+albedo_texture = ExtResource("tex1")
+uv1_triplanar = true
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+texture_filter = 2
+roughness = 1.0
+
+
+[sub_resource type="StandardMaterial3D" id="Concrete"]
+albedo_texture = ExtResource("tex2")
+uv1_triplanar = true
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+texture_filter = 2
+roughness = 1.0
+
+
+[sub_resource type="BoxMesh" id="mb1"]
+material = SubResource("Asphalt")
+size = Vector3(34.000000, 0.400000, 36.000000)
+
+[sub_resource type="BoxShape3D" id="sb1"]
+size = Vector3(34.000000, 0.400000, 36.000000)
+
+[sub_resource type="BoxMesh" id="mb2"]
+material = SubResource("Wall")
+size = Vector3(13.500000, 11.200000, 0.400000)
+
+[sub_resource type="BoxShape3D" id="sb2"]
+size = Vector3(13.500000, 11.200000, 0.400000)
+
+[sub_resource type="BoxMesh" id="mb3"]
+material = SubResource("Wall")
+size = Vector3(13.500000, 11.200000, 0.400000)
+
+[sub_resource type="BoxShape3D" id="sb3"]
+size = Vector3(13.500000, 11.200000, 0.400000)
+
+[sub_resource type="BoxMesh" id="mb4"]
+material = SubResource("Wall")
+size = Vector3(3.000000, 8.400000, 0.400000)
+
+[sub_resource type="BoxShape3D" id="sb4"]
+size = Vector3(3.000000, 8.400000, 0.400000)
+
+[sub_resource type="BoxMesh" id="mb5"]
+material = SubResource("Wall")
+size = Vector3(0.400000, 11.200000, 30.500000)
+
+[sub_resource type="BoxShape3D" id="sb5"]
+size = Vector3(0.400000, 11.200000, 30.500000)
+
+[sub_resource type="BoxMesh" id="mb62"]
+material = SubResource("Wall")
+size = Vector3(0.400000, 11.200000, 30.500000)
+
+[sub_resource type="BoxShape3D" id="sb62"]
+size = Vector3(0.400000, 11.200000, 30.500000)
+
+[sub_resource type="BoxMesh" id="mb126"]
+material = SubResource("WarmWindow")
+size = Vector3(1.270000, 1.220000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb127"]
+material = SubResource("WarmWindow")
+size = Vector3(1.270000, 1.220000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb128"]
+material = SubResource("WarmWindow")
+size = Vector3(1.270000, 1.220000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb129"]
+material = SubResource("WallGrime")
+size = Vector3(0.380000, 0.840000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb130"]
+material = SubResource("WallGrime")
+size = Vector3(0.700000, 0.530000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb131"]
+material = SubResource("WallGrime")
+size = Vector3(0.420000, 1.070000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb132"]
+material = SubResource("WallGrime")
+size = Vector3(0.550000, 0.700000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb133"]
+material = SubResource("WallGrime")
+size = Vector3(0.480000, 0.930000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb134"]
+material = SubResource("WallGrime")
+size = Vector3(0.650000, 0.620000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb135"]
+material = SubResource("WallGrime")
+size = Vector3(0.380000, 1.100000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb136"]
+material = SubResource("WallGrime")
+size = Vector3(0.120000, 0.360000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb137"]
+material = SubResource("WallGrime")
+size = Vector3(0.120000, 0.360000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb138"]
+material = SubResource("WallGrime")
+size = Vector3(0.120000, 0.360000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb139"]
+material = SubResource("WallGrime")
+size = Vector3(0.120000, 0.360000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb140"]
+material = SubResource("WallGrime")
+size = Vector3(0.120000, 0.360000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb141"]
+material = SubResource("WallGrime")
+size = Vector3(0.120000, 0.360000, 0.012000)
+
+[sub_resource type="BoxMesh" id="mb142"]
+material = SubResource("Concrete")
+size = Vector3(2.900000, 0.080000, 30.000000)
+
+[sub_resource type="BoxShape3D" id="sb142"]
+size = Vector3(2.900000, 0.080000, 30.000000)
+
+[sub_resource type="BoxMesh" id="mb143"]
+material = SubResource("Concrete")
+size = Vector3(2.900000, 0.080000, 30.000000)
+
+[sub_resource type="BoxShape3D" id="sb143"]
+size = Vector3(2.900000, 0.080000, 30.000000)
+
+[sub_resource type="BoxMesh" id="mb144"]
+material = SubResource("Concrete")
+size = Vector3(3.000000, 0.080000, 7.000000)
+
+[sub_resource type="BoxShape3D" id="sb144"]
+size = Vector3(3.000000, 0.080000, 7.000000)
+
+[sub_resource type="BoxMesh" id="mb145"]
+material = SubResource("Soil")
+size = Vector3(7.000000, 0.090000, 9.000000)
+
+[sub_resource type="BoxMesh" id="mb146"]
+material = SubResource("Concrete")
+size = Vector3(0.100000, 0.090000, 9.200000)
+
+[sub_resource type="BoxMesh" id="mb147"]
+material = SubResource("Concrete")
+size = Vector3(0.100000, 0.090000, 9.200000)
+
+[sub_resource type="BoxMesh" id="mb148"]
+material = SubResource("Concrete")
+size = Vector3(7.200000, 0.090000, 0.100000)
+
+[sub_resource type="BoxMesh" id="mb149"]
+material = SubResource("Concrete")
+size = Vector3(7.200000, 0.090000, 0.100000)
+
+[sub_resource type="BoxMesh" id="mb150"]
+material = SubResource("Soil")
+size = Vector3(7.000000, 0.090000, 9.000000)
+
+[sub_resource type="BoxMesh" id="mb151"]
+material = SubResource("Concrete")
+size = Vector3(0.100000, 0.090000, 9.200000)
+
+[sub_resource type="BoxMesh" id="mb152"]
+material = SubResource("Concrete")
+size = Vector3(0.100000, 0.090000, 9.200000)
+
+[sub_resource type="BoxMesh" id="mb153"]
+material = SubResource("Concrete")
+size = Vector3(7.200000, 0.090000, 0.100000)
+
+[sub_resource type="BoxMesh" id="mb154"]
+material = SubResource("Concrete")
+size = Vector3(7.200000, 0.090000, 0.100000)
+
+[sub_resource type="BoxShape3D" id="s161"]
+size = Vector3(12.000000, 2.000000, 0.200000)
+
+[sub_resource type="BoxShape3D" id="s162"]
+size = Vector3(12.000000, 2.000000, 0.200000)
+
+[sub_resource type="BoxMesh" id="mb163"]
+material = SubResource("Roof")
+size = Vector3(2.200000, 2.000000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="sb163"]
+size = Vector3(2.200000, 2.000000, 0.180000)
+
+[sub_resource type="BoxMesh" id="mb164"]
+material = SubResource("Roof")
+size = Vector3(2.200000, 2.000000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="sb164"]
+size = Vector3(2.200000, 2.000000, 0.180000)
+
+[sub_resource type="BoxMesh" id="mb165"]
+material = SubResource("Roof")
+size = Vector3(2.000000, 2.000000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="sb165"]
+size = Vector3(2.000000, 2.000000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="gs167"]
+size = Vector3(2.8, 2.5, 0.18)
+
+[sub_resource type="BoxMesh" id="mb168"]
+material = SubResource("Concrete")
+size = Vector3(2.950000, 0.080000, 5.000000)
+
+[sub_resource type="BoxMesh" id="mb169"]
+material = SubResource("Roof")
+size = Vector3(3.000000, 2.500000, 0.120000)
+
+[sub_resource type="BoxShape3D" id="s170"]
+size = Vector3(0.150000, 2.500000, 5.100000)
+
+[sub_resource type="BoxShape3D" id="s171"]
+size = Vector3(0.150000, 2.500000, 5.100000)
+
+[sub_resource type="BoxShape3D" id="s172"]
+size = Vector3(3.100000, 2.500000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="gs177"]
+size = Vector3(2.8, 2.5, 0.18)
+
+[sub_resource type="BoxMesh" id="mb178"]
+material = SubResource("Concrete")
+size = Vector3(2.950000, 0.080000, 5.000000)
+
+[sub_resource type="BoxMesh" id="mb179"]
+material = SubResource("Roof")
+size = Vector3(3.000000, 2.500000, 0.120000)
+
+[sub_resource type="BoxShape3D" id="s180"]
+size = Vector3(0.150000, 2.500000, 5.100000)
+
+[sub_resource type="BoxShape3D" id="s181"]
+size = Vector3(0.150000, 2.500000, 5.100000)
+
+[sub_resource type="BoxShape3D" id="s182"]
+size = Vector3(3.100000, 2.500000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="s187"]
+size = Vector3(3.150000, 2.600000, 2.500000)
+
+[sub_resource type="BoxShape3D" id="s189"]
+size = Vector3(2.600000, 0.320000, 2.600000)
+
+[sub_resource type="BoxShape3D" id="s191"]
+size = Vector3(0.120000, 2.200000, 0.120000)
+
+[sub_resource type="BoxShape3D" id="s192"]
+size = Vector3(0.120000, 2.200000, 0.120000)
+
+[sub_resource type="BoxShape3D" id="s193"]
+size = Vector3(0.120000, 2.200000, 0.120000)
+
+[sub_resource type="BoxShape3D" id="s195"]
+size = Vector3(1.550000, 0.800000, 1.850000)
+
+[sub_resource type="BoxMesh" id="mb196"]
+material = SubResource("WarmWindow")
+size = Vector3(0.340000, 0.025000, 0.480000)
+
+[sub_resource type="BoxShape3D" id="ya197"]
+size = Vector3(1.500000, 0.550000, 1.800000)
+
+[sub_resource type="BoxShape3D" id="s199"]
+size = Vector3(0.800000, 0.300000, 0.800000)
+
+[sub_resource type="BoxShape3D" id="s201"]
+size = Vector3(0.800000, 0.300000, 0.800000)
+
+[sub_resource type="BoxShape3D" id="s203"]
+size = Vector3(0.800000, 0.300000, 0.800000)
+
+[sub_resource type="BoxShape3D" id="s205"]
+size = Vector3(0.800000, 0.300000, 0.800000)
+
+[sub_resource type="BoxShape3D" id="s207"]
+size = Vector3(0.550000, 0.900000, 1.650000)
+
+[sub_resource type="BoxShape3D" id="s209"]
+size = Vector3(0.550000, 0.900000, 1.650000)
+
+[sub_resource type="BoxShape3D" id="s212"]
+size = Vector3(0.180000, 3.600000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="s215"]
+size = Vector3(0.180000, 3.600000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="s218"]
+size = Vector3(0.180000, 3.600000, 0.180000)
+
+[sub_resource type="BoxShape3D" id="s220"]
+size = Vector3(1.800000, 1.300000, 1.150000)
+
+[sub_resource type="BoxShape3D" id="s222"]
+size = Vector3(1.800000, 1.300000, 1.150000)
+
+[sub_resource type="BoxShape3D" id="s227"]
+size = Vector3(0.200000, 0.800000, 0.200000)
+
+[sub_resource type="BoxShape3D" id="s229"]
+size = Vector3(0.200000, 0.800000, 0.200000)
+
+[sub_resource type="BoxShape3D" id="s232"]
+size = Vector3(0.650000, 0.500000, 0.600000)
+
+[sub_resource type="BoxShape3D" id="ya234"]
+size = Vector3(0.650000, 1.300000, 0.900000)
+
+[sub_resource type="QuadMesh" id="poster235"]
+material = SubResource("Poster")
+size = Vector2(1.38, 1.295)
+
+[sub_resource type="BoxShape3D" id="ya236"]
+size = Vector3(1.550000, 1.550000, 0.400000)
+
+[sub_resource type="BoxMesh" id="mb237"]
+material = SubResource("Concrete")
+size = Vector3(3.100000, 0.100000, 7.200000)
+
+[sub_resource type="BoxShape3D" id="sb237"]
+size = Vector3(3.100000, 0.100000, 7.200000)
+
+[sub_resource type="BoxMesh" id="mb238"]
+material = SubResource("Wall")
+size = Vector3(0.200000, 3.600000, 8.500000)
+
+[sub_resource type="BoxShape3D" id="sb238"]
+size = Vector3(0.200000, 3.600000, 8.500000)
+
+[sub_resource type="BoxMesh" id="mb239"]
+material = SubResource("Wall")
+size = Vector3(0.200000, 3.600000, 8.500000)
+
+[sub_resource type="BoxShape3D" id="sb239"]
+size = Vector3(0.200000, 3.600000, 8.500000)
+
+[sub_resource type="BoxMesh" id="mb240"]
+material = SubResource("Roof")
+size = Vector3(3.300000, 0.160000, 8.000000)
+
+[sub_resource type="BoxShape3D" id="sb240"]
+size = Vector3(3.300000, 0.160000, 8.000000)
+
+[sub_resource type="BoxMesh" id="mb241"]
+material = SubResource("Wall")
+size = Vector3(0.940000, 2.800000, 0.250000)
+
+[sub_resource type="BoxShape3D" id="sb241"]
+size = Vector3(0.940000, 2.800000, 0.250000)
+
+[sub_resource type="BoxMesh" id="mb242"]
+material = SubResource("Wall")
+size = Vector3(0.940000, 2.800000, 0.250000)
+
+[sub_resource type="BoxShape3D" id="sb242"]
+size = Vector3(0.940000, 2.800000, 0.250000)
+
+[sub_resource type="BoxMesh" id="mb243"]
+material = SubResource("Wall")
+size = Vector3(1.160000, 0.580000, 0.250000)
+
+[sub_resource type="BoxShape3D" id="sb243"]
+size = Vector3(1.160000, 0.580000, 0.250000)
+
+[sub_resource type="BoxShape3D" id="s249"]
+size = Vector3(0.960000, 2.140000, 0.090000)
+
+[sub_resource type="BoxMesh" id="mb257"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 0.140000, 0.280000)
+
+[sub_resource type="BoxMesh" id="mb258"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 0.280000, 0.280000)
+
+[sub_resource type="BoxMesh" id="mb259"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 0.420000, 0.280000)
+
+[sub_resource type="BoxMesh" id="mb260"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 0.560000, 0.280000)
+
+[sub_resource type="BoxMesh" id="mb261"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 0.700000, 0.280000)
+
+[sub_resource type="BoxMesh" id="mb262"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 0.840000, 0.280000)
+
+[sub_resource type="BoxMesh" id="mb263"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 0.980000, 0.280000)
+
+[sub_resource type="BoxMesh" id="mb264"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 1.120000, 0.280000)
+
+[sub_resource type="BoxMesh" id="mb265"]
+material = SubResource("Concrete")
+size = Vector3(2.500000, 1.260000, 0.280000)
+
+[sub_resource type="ConcavePolygonShape3D" id="StairRamp"]
+data = PackedVector3Array(-1.25, 0.02, -19.46, 1.25, 0.02, -19.46, 1.25, 1.26, -21.98, -1.25, 0.02, -19.46, 1.25, 1.26, -21.98, -1.25, 1.26, -21.98, -1.25, 1.26, -21.98, 1.25, 1.26, -21.98, 1.25, 1.26, -23.4, -1.25, 1.26, -21.98, 1.25, 1.26, -23.4, -1.25, 1.26, -23.4)
+backface_collision = true
+
+[sub_resource type="BoxMesh" id="mb266"]
+material = SubResource("Concrete")
+size = Vector3(3.000000, 0.120000, 1.500000)
+
+[sub_resource type="BoxMesh" id="mb267"]
+material = SubResource("Wall")
+size = Vector3(3.300000, 3.400000, 0.200000)
+
+[sub_resource type="BoxShape3D" id="sb267"]
+size = Vector3(3.300000, 3.400000, 0.200000)
+
+[sub_resource type="BoxMesh" id="mb268"]
+material = SubResource("Roof")
+size = Vector3(3.300000, 0.100000, 3.000000)
+
+[sub_resource type="BoxShape3D" id="sb268"]
+size = Vector3(3.300000, 0.100000, 3.000000)
+
+[sub_resource type="BoxShape3D" id="s271"]
+size = Vector3(1.050000, 2.100000, 0.180000)
+
+[node name="TikhayaStreet" type="Node3D"]
+
+[node name="Architecture" type="Node3D" parent="."]
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Collision" type="Node3D" parent="."]
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="Entrance" type="Node3D" parent="."]
+
+[node name="Playground" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment")
+
+[node name="Moon" type="DirectionalLight3D" parent="Lighting"]
+rotation_degrees = Vector3(-43, -28, 0)
+light_color = Color(0.42, 0.54, 0.7, 1)
+light_energy = 0.42
+shadow_enabled = true
+directional_shadow_max_distance = 52.0
+
+[node name="CourtyardGround_1" type="StaticBody3D" parent="Collision"]
+position = Vector3(0.000000, -0.220000, 1.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/CourtyardGround_1"]
+mesh = SubResource("mb1")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/CourtyardGround_1"]
+shape = SubResource("sb1")
+
+[node name="NorthBuildingBack_2" type="StaticBody3D" parent="Collision"]
+position = Vector3(-8.250000, 5.600000, -14.200000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/NorthBuildingBack_2"]
+mesh = SubResource("mb2")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/NorthBuildingBack_2"]
+shape = SubResource("sb2")
+
+[node name="NorthBuildingBack_3" type="StaticBody3D" parent="Collision"]
+position = Vector3(8.250000, 5.600000, -14.200000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/NorthBuildingBack_3"]
+mesh = SubResource("mb3")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/NorthBuildingBack_3"]
+shape = SubResource("sb3")
+
+[node name="NorthHeader_4" type="StaticBody3D" parent="Collision"]
+position = Vector3(0.000000, 7.000000, -14.200000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/NorthHeader_4"]
+mesh = SubResource("mb4")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/NorthHeader_4"]
+shape = SubResource("sb4")
+
+[node name="BuildingSide_5" type="StaticBody3D" parent="Collision"]
+position = Vector3(-15.200000, 5.600000, 1.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/BuildingSide_5"]
+mesh = SubResource("mb5")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/BuildingSide_5"]
+shape = SubResource("sb5")
+
+[node name="CIS_PanelFacade_6" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, -12.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_7" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, -12.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_8" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, -12.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_9" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, -12.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_10" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, -9.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_11" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, -9.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_12" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, -9.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_13" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, -9.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_14" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, -6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_15" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, -6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_16" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, -6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_17" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, -6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_18" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, -3.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_19" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, -3.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_20" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, -3.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_21" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, -3.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_22" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, 0.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_23" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, 0.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_24" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, 0.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_25" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, 0.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_26" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, 3.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_27" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, 3.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_28" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, 3.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_29" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, 3.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_30" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, 6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_31" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, 6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_32" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, 6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_33" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, 6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_34" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, 9.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_35" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, 9.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_36" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, 9.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_37" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, 9.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_38" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, 12.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_39" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, 12.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_40" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, 12.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_41" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, 12.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_42" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 0.000000, 15.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_43" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 2.800000, 15.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_44" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 5.600000, 15.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_45" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-15.000000, 8.400000, 15.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_46" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-12.000000, 0.000000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_47" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-12.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_48" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-12.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_49" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-12.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_50" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-9.000000, 0.000000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_51" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-9.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_52" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-9.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_53" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-9.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_54" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-6.000000, 0.000000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_55" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-6.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_56" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-6.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_57" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-6.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_58" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-3.000000, 0.000000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_59" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-3.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_60" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-3.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_61" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(-3.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="BuildingSide_62" type="StaticBody3D" parent="Collision"]
+position = Vector3(15.200000, 5.600000, 1.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/BuildingSide_62"]
+mesh = SubResource("mb62")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/BuildingSide_62"]
+shape = SubResource("sb62")
+
+[node name="CIS_PanelFacade_63" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, -12.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_64" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, -12.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_65" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, -12.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_66" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, -12.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_67" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, -9.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_68" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, -9.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_69" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, -9.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_70" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, -9.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_71" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, -6.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_72" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, -6.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_73" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, -6.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_74" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, -6.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_75" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, -3.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_76" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, -3.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_77" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, -3.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_78" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, -3.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_79" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, 0.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_80" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, 0.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_81" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, 0.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_82" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, 0.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_83" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, 3.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_84" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, 3.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_85" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, 3.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_86" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, 3.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_87" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, 6.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_88" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, 6.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_89" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, 6.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_90" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, 6.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_91" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, 9.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_92" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, 9.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_93" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, 9.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_94" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, 9.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_95" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, 12.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_96" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, 12.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_97" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, 12.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_98" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, 12.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_99" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 0.000000, 15.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_100" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 2.800000, 15.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_101" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 5.600000, 15.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_102" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(15.000000, 8.400000, 15.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="CIS_PanelFacade_103" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(3.000000, 0.000000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_104" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(3.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_105" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(3.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_106" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(3.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_107" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(6.000000, 0.000000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_108" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(6.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_109" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(6.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_110" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(6.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_111" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(9.000000, 0.000000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_112" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(9.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_113" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(9.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_114" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(9.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_115" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(12.000000, 0.000000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_116" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(12.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_117" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(12.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_118" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(12.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_119" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(0.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_120" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(0.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_PanelFacade_121" parent="Architecture" instance=ExtResource("21")]
+position = Vector3(0.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_GlazedBalcony_122" parent="Architecture" instance=ExtResource("17")]
+position = Vector3(-9.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_GlazedBalcony_123" parent="Architecture" instance=ExtResource("17")]
+position = Vector3(-3.000000, 5.600000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_GlazedBalcony_124" parent="Architecture" instance=ExtResource("17")]
+position = Vector3(6.000000, 2.800000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_GlazedBalcony_125" parent="Architecture" instance=ExtResource("17")]
+position = Vector3(12.000000, 8.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="LitWindow_126" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-6.000000, 7.220000, -13.992000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb126")
+
+[node name="LitWindow_127" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(3.000000, 4.420000, -13.992000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb127")
+
+[node name="LitWindow_128" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(9.000000, 1.620000, -13.992000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb128")
+
+[node name="WallDamp_129" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-12.500000, 0.420000, -13.862000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb129")
+
+[node name="WallDamp_130" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-10.400000, 0.265000, -13.862000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb130")
+
+[node name="WallDamp_131" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-7.600000, 0.535000, -13.862000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb131")
+
+[node name="WallDamp_132" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-4.400000, 0.350000, -13.862000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb132")
+
+[node name="WallDamp_133" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(4.200000, 0.465000, -13.862000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb133")
+
+[node name="WallDamp_134" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(7.400000, 0.310000, -13.862000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb134")
+
+[node name="WallDamp_135" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(10.700000, 0.550000, -13.862000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb135")
+
+[node name="WallDrip_136" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-12.200000, 2.150000, -13.855000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb136")
+
+[node name="WallDrip_137" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-8.700000, 2.150000, -13.855000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb137")
+
+[node name="WallDrip_138" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-5.300000, 2.150000, -13.855000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb138")
+
+[node name="WallDrip_139" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(5.800000, 2.150000, -13.855000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb139")
+
+[node name="WallDrip_140" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(9.400000, 2.150000, -13.855000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb140")
+
+[node name="WallDrip_141" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(12.100000, 2.150000, -13.855000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb141")
+
+[node name="Walkway_142" type="StaticBody3D" parent="Collision"]
+position = Vector3(-13.300000, -0.005000, 1.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/Walkway_142"]
+mesh = SubResource("mb142")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Walkway_142"]
+shape = SubResource("sb142")
+
+[node name="Walkway_143" type="StaticBody3D" parent="Collision"]
+position = Vector3(13.300000, -0.005000, 1.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/Walkway_143"]
+mesh = SubResource("mb143")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Walkway_143"]
+shape = SubResource("sb143")
+
+[node name="EntryWalk_144" type="StaticBody3D" parent="Collision"]
+position = Vector3(0.000000, -0.005000, -10.500000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/EntryWalk_144"]
+mesh = SubResource("mb144")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/EntryWalk_144"]
+shape = SubResource("sb144")
+
+[node name="GrassBed_145" type="MeshInstance3D" parent="Collision"]
+position = Vector3(-6.000000, -0.045000, -2.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb145")
+
+[node name="Curb_146" type="MeshInstance3D" parent="Collision"]
+position = Vector3(-9.550000, 0.035000, -2.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb146")
+
+[node name="Curb_147" type="MeshInstance3D" parent="Collision"]
+position = Vector3(-2.450000, 0.035000, -2.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb147")
+
+[node name="Curb_148" type="MeshInstance3D" parent="Collision"]
+position = Vector3(-6.000000, 0.035000, -6.550000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb148")
+
+[node name="Curb_149" type="MeshInstance3D" parent="Collision"]
+position = Vector3(-6.000000, 0.035000, 2.550000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb149")
+
+[node name="GrassBed_150" type="MeshInstance3D" parent="Collision"]
+position = Vector3(6.000000, -0.045000, -2.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb150")
+
+[node name="Curb_151" type="MeshInstance3D" parent="Collision"]
+position = Vector3(2.450000, 0.035000, -2.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb151")
+
+[node name="Curb_152" type="MeshInstance3D" parent="Collision"]
+position = Vector3(9.550000, 0.035000, -2.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb152")
+
+[node name="Curb_153" type="MeshInstance3D" parent="Collision"]
+position = Vector3(6.000000, 0.035000, -6.550000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb153")
+
+[node name="Curb_154" type="MeshInstance3D" parent="Collision"]
+position = Vector3(6.000000, 0.035000, 2.550000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb154")
+
+[node name="CIS_ConcreteFence_155" parent="Architecture" instance=ExtResource("7")]
+position = Vector3(-13.500000, 0.000000, 18.000000)
+rotation = Vector3(0.000000, 3.141593, 0.000000)
+
+[node name="CIS_ConcreteFence_156" parent="Architecture" instance=ExtResource("7")]
+position = Vector3(-10.700000, 0.000000, 18.000000)
+rotation = Vector3(0.000000, 3.141593, 0.000000)
+
+[node name="CIS_ConcreteFence_157" parent="Architecture" instance=ExtResource("7")]
+position = Vector3(-7.900000, 0.000000, 18.000000)
+rotation = Vector3(0.000000, 3.141593, 0.000000)
+
+[node name="CIS_ConcreteFence_158" parent="Architecture" instance=ExtResource("7")]
+position = Vector3(7.900000, 0.000000, 18.000000)
+rotation = Vector3(0.000000, 3.141593, 0.000000)
+
+[node name="CIS_ConcreteFence_159" parent="Architecture" instance=ExtResource("7")]
+position = Vector3(10.700000, 0.000000, 18.000000)
+rotation = Vector3(0.000000, 3.141593, 0.000000)
+
+[node name="CIS_ConcreteFence_160" parent="Architecture" instance=ExtResource("7")]
+position = Vector3(13.500000, 0.000000, 18.000000)
+rotation = Vector3(0.000000, 3.141593, 0.000000)
+
+[node name="SouthFenceLeft_161" type="StaticBody3D" parent="Collision"]
+position = Vector3(-9.000000, 1.000000, 18.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/SouthFenceLeft_161"]
+shape = SubResource("s161")
+
+[node name="SouthFenceRight_162" type="StaticBody3D" parent="Collision"]
+position = Vector3(9.000000, 1.000000, 18.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/SouthFenceRight_162"]
+shape = SubResource("s162")
+
+[node name="GateLeft_163" type="StaticBody3D" parent="Collision"]
+position = Vector3(-2.100000, 1.000000, 18.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/GateLeft_163"]
+mesh = SubResource("mb163")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GateLeft_163"]
+shape = SubResource("sb163")
+
+[node name="GateRight_164" type="StaticBody3D" parent="Collision"]
+position = Vector3(2.100000, 1.000000, 18.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/GateRight_164"]
+mesh = SubResource("mb164")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GateRight_164"]
+shape = SubResource("sb164")
+
+[node name="GateClosed_165" type="StaticBody3D" parent="Collision"]
+position = Vector3(0.000000, 1.000000, 18.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Collision/GateClosed_165"]
+mesh = SubResource("mb165")
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GateClosed_165"]
+shape = SubResource("sb165")
+
+[node name="CIS_GarageShell_166" parent="Architecture" instance=ExtResource("16")]
+position = Vector3(-9.000000, 0.000000, 14.100000)
+rotation = Vector3(0.000000, 3.141593, 0.000000)
+
+[node name="GarageDoorLeft" type="Node3D" parent="Props"]
+position = Vector3(-9, 0, 14.1)
+rotation = Vector3(0, 3.141593, 0)
+script = ExtResource("4")
+
+[node name="LeftDoor" parent="Props/GarageDoorLeft" instance=ExtResource("14")]
+position = Vector3(-1.57, 0, 2.64)
+
+[node name="RightDoor" parent="Props/GarageDoorLeft" instance=ExtResource("15")]
+position = Vector3(1.57, 0, 2.64)
+
+[node name="Blocker" type="StaticBody3D" parent="Props/GarageDoorLeft"]
+
+[node name="Shape" type="CollisionShape3D" parent="Props/GarageDoorLeft/Blocker"]
+position = Vector3(0, 1.25, 2.64)
+shape = SubResource("gs167")
+
+[node name="GarageFloor_168" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-9.000000, 0.020000, 14.200000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb168")
+
+[node name="GarageBack_169" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-9.000000, 1.250000, 16.620000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb169")
+
+[node name="GarageSide_170" type="StaticBody3D" parent="Collision"]
+position = Vector3(-10.550000, 1.250000, 14.150000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GarageSide_170"]
+shape = SubResource("s170")
+
+[node name="GarageSide_171" type="StaticBody3D" parent="Collision"]
+position = Vector3(-7.450000, 1.250000, 14.150000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GarageSide_171"]
+shape = SubResource("s171")
+
+[node name="GarageBack_172" type="StaticBody3D" parent="Collision"]
+position = Vector3(-9.000000, 1.250000, 16.550000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GarageBack_172"]
+shape = SubResource("s172")
+
+[node name="Crate_173" parent="Props" instance=ExtResource("25")]
+position = Vector3(-9.620000, 0.000000, 15.250000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Crate_174" parent="Props" instance=ExtResource("25")]
+position = Vector3(-8.580000, 0.000000, 15.700000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="GarageBulb_175" type="OmniLight3D" parent="Lighting"]
+position = Vector3(-9.000000, 2.150000, 15.500000)
+light_color = Color(0.7, 0.63, 0.4, 1)
+light_energy = 0.5
+omni_range = 2.4
+shadow_enabled = true
+shadow_bias = 0.08
+
+[node name="CIS_GarageShell_176" parent="Architecture" instance=ExtResource("16")]
+position = Vector3(-5.600000, 0.000000, 14.100000)
+rotation = Vector3(0.000000, 3.141593, 0.000000)
+
+[node name="GarageDoorRight" type="Node3D" parent="Props"]
+position = Vector3(-5.6, 0, 14.1)
+rotation = Vector3(0, 3.141593, 0)
+script = ExtResource("4")
+
+[node name="LeftDoor" parent="Props/GarageDoorRight" instance=ExtResource("14")]
+position = Vector3(-1.57, 0, 2.64)
+
+[node name="RightDoor" parent="Props/GarageDoorRight" instance=ExtResource("15")]
+position = Vector3(1.57, 0, 2.64)
+
+[node name="Blocker" type="StaticBody3D" parent="Props/GarageDoorRight"]
+
+[node name="Shape" type="CollisionShape3D" parent="Props/GarageDoorRight/Blocker"]
+position = Vector3(0, 1.25, 2.64)
+shape = SubResource("gs177")
+
+[node name="GarageFloor_178" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-5.600000, 0.020000, 14.200000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb178")
+
+[node name="GarageBack_179" type="MeshInstance3D" parent="Architecture"]
+position = Vector3(-5.600000, 1.250000, 16.620000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb179")
+
+[node name="GarageSide_180" type="StaticBody3D" parent="Collision"]
+position = Vector3(-7.150000, 1.250000, 14.150000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GarageSide_180"]
+shape = SubResource("s180")
+
+[node name="GarageSide_181" type="StaticBody3D" parent="Collision"]
+position = Vector3(-4.050000, 1.250000, 14.150000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GarageSide_181"]
+shape = SubResource("s181")
+
+[node name="GarageBack_182" type="StaticBody3D" parent="Collision"]
+position = Vector3(-5.600000, 1.250000, 16.550000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/GarageBack_182"]
+shape = SubResource("s182")
+
+[node name="Crate_183" parent="Props" instance=ExtResource("25")]
+position = Vector3(-6.220000, 0.000000, 15.250000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Crate_184" parent="Props" instance=ExtResource("25")]
+position = Vector3(-5.180000, 0.000000, 15.700000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="GarageBulb_185" type="OmniLight3D" parent="Lighting"]
+position = Vector3(-5.600000, 2.150000, 15.500000)
+light_color = Color(0.7, 0.63, 0.4, 1)
+light_energy = 0.5
+omni_range = 2.4
+shadow_enabled = true
+shadow_bias = 0.08
+
+[node name="CIS_Kiosk_186" parent="Architecture" instance=ExtResource("19")]
+position = Vector3(10.500000, 0.000000, 13.800000)
+rotation = Vector3(0.000000, -0.383972, 0.000000)
+
+[node name="Kiosk_187" type="StaticBody3D" parent="Collision"]
+position = Vector3(10.500000, 1.250000, 13.800000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Kiosk_187"]
+shape = SubResource("s187")
+
+[node name="CIS_Sandbox_188" parent="Playground" instance=ExtResource("23")]
+position = Vector3(6.000000, 0.000000, -1.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Sandbox_189" type="StaticBody3D" parent="Collision"]
+position = Vector3(6.000000, 0.160000, -1.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Sandbox_189"]
+shape = SubResource("s189")
+
+[node name="CIS_PullUpBars_190" parent="Playground" instance=ExtResource("22")]
+position = Vector3(8.800000, 0.000000, -4.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="BarPost_191" type="StaticBody3D" parent="Collision"]
+position = Vector3(8.800000, 1.100000, -5.200000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/BarPost_191"]
+shape = SubResource("s191")
+
+[node name="BarPost_192" type="StaticBody3D" parent="Collision"]
+position = Vector3(8.800000, 1.100000, -4.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/BarPost_192"]
+shape = SubResource("s192")
+
+[node name="BarPost_193" type="StaticBody3D" parent="Collision"]
+position = Vector3(8.800000, 1.100000, -2.800000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/BarPost_193"]
+shape = SubResource("s193")
+
+[node name="CIS_CourtyardTable_194" parent="Props" instance=ExtResource("8")]
+position = Vector3(-6.000000, 0.000000, -2.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CourtyardTable_195" type="StaticBody3D" parent="Collision"]
+position = Vector3(-6.000000, 0.400000, -2.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/CourtyardTable_195"]
+shape = SubResource("s195")
+
+[node name="YardNote_196" type="MeshInstance3D" parent="Props"]
+position = Vector3(-6.000000, 0.840000, -2.000000)
+rotation = Vector3(-0.069813, 0.000000, 0.000000)
+mesh = SubResource("mb196")
+
+[node name="TableNote" type="Node3D" parent="Props"]
+position = Vector3(-6.000000, 0.950000, -2.000000)
+script = ExtResource("3")
+prompt = "E  ·  Прочитать записку"
+message = "На обороте квитанции: «Не включай свет после полуночи»."
+action_id = "note"
+action_type = "inspect"
+
+[node name="Body" type="StaticBody3D" parent="Props/TableNote"]
+
+[node name="Shape" type="CollisionShape3D" parent="Props/TableNote/Body"]
+shape = SubResource("ya197")
+
+[node name="CIS_TirePlanter_198" parent="Props" instance=ExtResource("24")]
+position = Vector3(-3.100000, 0.000000, 5.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Tire_199" type="StaticBody3D" parent="Collision"]
+position = Vector3(-3.100000, 0.150000, 5.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Tire_199"]
+shape = SubResource("s199")
+
+[node name="CIS_TirePlanter_200" parent="Props" instance=ExtResource("24")]
+position = Vector3(3.100000, 0.000000, 5.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Tire_201" type="StaticBody3D" parent="Collision"]
+position = Vector3(3.100000, 0.150000, 5.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Tire_201"]
+shape = SubResource("s201")
+
+[node name="CIS_TirePlanter_202" parent="Props" instance=ExtResource("24")]
+position = Vector3(-2.000000, 0.000000, -7.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Tire_203" type="StaticBody3D" parent="Collision"]
+position = Vector3(-2.000000, 0.150000, -7.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Tire_203"]
+shape = SubResource("s203")
+
+[node name="CIS_TirePlanter_204" parent="Props" instance=ExtResource("24")]
+position = Vector3(2.000000, 0.000000, -7.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Tire_205" type="StaticBody3D" parent="Collision"]
+position = Vector3(2.000000, 0.150000, -7.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Tire_205"]
+shape = SubResource("s205")
+
+[node name="Bench_206" parent="Props" instance=ExtResource("5")]
+position = Vector3(-11.500000, 0.000000, -6.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="Bench_207" type="StaticBody3D" parent="Collision"]
+position = Vector3(-11.500000, 0.450000, -6.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Bench_207"]
+shape = SubResource("s207")
+
+[node name="Bench_208" parent="Props" instance=ExtResource("5")]
+position = Vector3(11.500000, 0.000000, 5.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="Bench_209" type="StaticBody3D" parent="Collision"]
+position = Vector3(11.500000, 0.450000, 5.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Bench_209"]
+shape = SubResource("s209")
+
+[node name="StreetLamp_210" parent="Props" instance=ExtResource("34")]
+position = Vector3(-11.000000, 0.000000, 9.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="StreetLight_211" type="OmniLight3D" parent="Lighting"]
+position = Vector3(-11.000000, 3.650000, 9.800000)
+light_color = Color(0.94, 0.75, 0.52, 1)
+light_energy = 1.75
+omni_range = 9
+shadow_enabled = true
+shadow_bias = 0.08
+
+[node name="LampPost_212" type="StaticBody3D" parent="Collision"]
+position = Vector3(-11.000000, 1.800000, 9.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/LampPost_212"]
+shape = SubResource("s212")
+
+[node name="StreetLamp_213" parent="Props" instance=ExtResource("34")]
+position = Vector3(11.000000, 0.000000, -9.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="StreetLight_214" type="OmniLight3D" parent="Lighting"]
+position = Vector3(11.000000, 3.650000, -8.200000)
+light_color = Color(0.94, 0.75, 0.52, 1)
+light_energy = 1.75
+omni_range = 9
+shadow_enabled = true
+shadow_bias = 0.08
+
+[node name="LampPost_215" type="StaticBody3D" parent="Collision"]
+position = Vector3(11.000000, 1.800000, -9.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/LampPost_215"]
+shape = SubResource("s215")
+
+[node name="StreetLamp_216" parent="Props" instance=ExtResource("34")]
+position = Vector3(-11.000000, 0.000000, -10.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="StreetLight_217" type="OmniLight3D" parent="Lighting"]
+position = Vector3(-11.000000, 3.650000, -9.200000)
+light_color = Color(0.94, 0.75, 0.52, 1)
+light_energy = 1.75
+omni_range = 9
+shadow_enabled = true
+shadow_bias = 0.08
+
+[node name="LampPost_218" type="StaticBody3D" parent="Collision"]
+position = Vector3(-11.000000, 1.800000, -10.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/LampPost_218"]
+shape = SubResource("s218")
+
+[node name="Dumpster_219" parent="Props" instance=ExtResource("28")]
+position = Vector3(12.000000, 0.000000, 10.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Dumpster_220" type="StaticBody3D" parent="Collision"]
+position = Vector3(12.000000, 0.650000, 10.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Dumpster_220"]
+shape = SubResource("s220")
+
+[node name="Dumpster_221" parent="Props" instance=ExtResource("28")]
+position = Vector3(12.500000, 0.000000, 8.500000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Dumpster_222" type="StaticBody3D" parent="Collision"]
+position = Vector3(12.500000, 0.650000, 8.500000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Dumpster_222"]
+shape = SubResource("s222")
+
+[node name="Manhole_223" parent="Props" instance=ExtResource("31")]
+position = Vector3(-2.000000, 0.010000, 10.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Manhole_224" parent="Props" instance=ExtResource("31")]
+position = Vector3(4.000000, 0.010000, 8.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Manhole_225" parent="Props" instance=ExtResource("31")]
+position = Vector3(-10.000000, 0.010000, -9.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Bollard_226" parent="Props" instance=ExtResource("6")]
+position = Vector3(-1.600000, 0.000000, 12.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Bollard_227" type="StaticBody3D" parent="Collision"]
+position = Vector3(-1.600000, 0.400000, 12.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Bollard_227"]
+shape = SubResource("s227")
+
+[node name="Bollard_228" parent="Props" instance=ExtResource("6")]
+position = Vector3(1.600000, 0.000000, 12.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Bollard_229" type="StaticBody3D" parent="Collision"]
+position = Vector3(1.600000, 0.400000, 12.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Bollard_229"]
+shape = SubResource("s229")
+
+[node name="TrafficCone_230" parent="Props" instance=ExtResource("35")]
+position = Vector3(9.000000, 0.000000, 10.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Crate_231" parent="Props" instance=ExtResource("25")]
+position = Vector3(8.800000, 0.000000, 12.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Crate_232" type="StaticBody3D" parent="Collision"]
+position = Vector3(8.800000, 0.250000, 12.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Collision/Crate_232"]
+shape = SubResource("s232")
+
+[node name="FuseBox_233" parent="Props" instance=ExtResource("29")]
+position = Vector3(-10.660000, 1.050000, 14.200000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="YardLightSwitch" type="Node3D" parent="Props"]
+position = Vector3(-10.350000, 1.150000, 14.200000)
+script = ExtResource("3")
+prompt = "E  ·  Включить дворовый свет"
+message = ""
+action_id = "light"
+action_type = "light_switch"
+
+[node name="Body" type="StaticBody3D" parent="Props/YardLightSwitch"]
+
+[node name="Shape" type="CollisionShape3D" parent="Props/YardLightSwitch/Body"]
+shape = SubResource("ya234")
+
+[node name="YardFloodlight" type="OmniLight3D" parent="Lighting" groups=["yard_floodlights"]]
+position = Vector3(0, 5.8, 1)
+light_color = Color(0.58, 0.72, 0.9, 1)
+light_energy = 4.2
+omni_range = 19.0
+shadow_enabled = true
+visible = false
+
+[node name="MissingPoster" type="MeshInstance3D" parent="Props"]
+position = Vector3(10.845000, 1.440000, 12.929000)
+rotation = Vector3(0, 2.7576202181510405, 0)
+mesh = SubResource("poster235")
+
+[node name="GaragePoster" type="Node3D" parent="Props"]
+position = Vector3(10.845000, 1.440000, 12.690000)
+script = ExtResource("3")
+prompt = "E  ·  Прочитать объявление"
+message = "На ларьке приклеено объявление: «ТЫ ЕГО ВИДЕЛ?»"
+action_id = "poster"
+action_type = "inspect"
+
+[node name="Body" type="StaticBody3D" parent="Props/GaragePoster"]
+
+[node name="Shape" type="CollisionShape3D" parent="Props/GaragePoster/Body"]
+shape = SubResource("ya236")
+
+[node name="LobbyFloor_237" type="StaticBody3D" parent="Entrance"]
+position = Vector3(0.000000, -0.050000, -17.600000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/LobbyFloor_237"]
+mesh = SubResource("mb237")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/LobbyFloor_237"]
+shape = SubResource("sb237")
+
+[node name="LobbyWall_238" type="StaticBody3D" parent="Entrance"]
+position = Vector3(-1.550000, 1.800000, -18.300000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/LobbyWall_238"]
+mesh = SubResource("mb238")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/LobbyWall_238"]
+shape = SubResource("sb238")
+
+[node name="LobbyWall_239" type="StaticBody3D" parent="Entrance"]
+position = Vector3(1.550000, 1.800000, -18.300000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/LobbyWall_239"]
+mesh = SubResource("mb239")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/LobbyWall_239"]
+shape = SubResource("sb239")
+
+[node name="LobbyCeiling_240" type="StaticBody3D" parent="Entrance"]
+position = Vector3(0.000000, 3.500000, -18.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/LobbyCeiling_240"]
+mesh = SubResource("mb240")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/LobbyCeiling_240"]
+shape = SubResource("sb240")
+
+[node name="DoorwaySide_241" type="StaticBody3D" parent="Entrance"]
+position = Vector3(-1.030000, 1.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/DoorwaySide_241"]
+mesh = SubResource("mb241")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/DoorwaySide_241"]
+shape = SubResource("sb241")
+
+[node name="DoorwaySide_242" type="StaticBody3D" parent="Entrance"]
+position = Vector3(1.030000, 1.400000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/DoorwaySide_242"]
+mesh = SubResource("mb242")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/DoorwaySide_242"]
+shape = SubResource("sb242")
+
+[node name="DoorwayLintel_243" type="StaticBody3D" parent="Entrance"]
+position = Vector3(0.000000, 2.510000, -14.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/DoorwayLintel_243"]
+mesh = SubResource("mb243")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/DoorwayLintel_243"]
+shape = SubResource("sb243")
+
+[node name="CIS_EntranceCanopy_244" parent="Entrance" instance=ExtResource("9")]
+position = Vector3(0.000000, 2.700000, -13.600000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_EntrySign_245" parent="Entrance" instance=ExtResource("11")]
+position = Vector3(1.100000, 2.150000, -13.830000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_Intercom_246" parent="Entrance" instance=ExtResource("18")]
+position = Vector3(0.890000, 1.400000, -13.800000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="CIS_NoticeBoard_247" parent="Entrance" instance=ExtResource("20")]
+position = Vector3(-1.050000, 0.800000, -13.830000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="EntryDoor" type="Node3D" parent="Entrance"]
+position = Vector3(-0.48, 0, -14)
+script = ExtResource("2")
+
+[node name="CIS_EntranceDoor_248" parent="Entrance/EntryDoor" instance=ExtResource("10")]
+position = Vector3(0.000000, 0.000000, 0.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="DoorCollider_249" type="StaticBody3D" parent="Entrance/EntryDoor"]
+position = Vector3(0.480000, 1.070000, 0.000000)
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/EntryDoor/DoorCollider_249"]
+shape = SubResource("s249")
+
+[node name="Mailboxes_250" parent="Entrance" instance=ExtResource("30")]
+position = Vector3(-1.400000, 0.800000, -16.000000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="Radiator_251" parent="Entrance" instance=ExtResource("32")]
+position = Vector3(1.360000, 0.000000, -17.000000)
+rotation = Vector3(0.000000, -1.570796, 0.000000)
+
+[node name="FuseBox_252" parent="Entrance" instance=ExtResource("29")]
+position = Vector3(-1.350000, 1.100000, -18.400000)
+rotation = Vector3(0.000000, 1.570796, 0.000000)
+
+[node name="WallLamp_253" parent="Entrance" instance=ExtResource("36")]
+position = Vector3(0.000000, 2.600000, -15.200000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="LobbyLamp_254" type="OmniLight3D" parent="Lighting"]
+position = Vector3(0.000000, 2.500000, -15.200000)
+light_color = Color(0.87, 0.8, 0.52, 1)
+light_energy = 2.1
+omni_range = 5
+shadow_enabled = true
+shadow_bias = 0.08
+
+[node name="WallLamp_255" parent="Entrance" instance=ExtResource("36")]
+position = Vector3(0.000000, 2.600000, -19.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="LobbyLamp_256" type="OmniLight3D" parent="Lighting"]
+position = Vector3(0.000000, 2.500000, -19.000000)
+light_color = Color(0.87, 0.8, 0.52, 1)
+light_energy = 2.1
+omni_range = 5
+shadow_enabled = true
+shadow_bias = 0.08
+
+[node name="StairStep_257" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.070000, -19.600000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb257")
+
+[node name="StairStep_258" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.140000, -19.880000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb258")
+
+[node name="StairStep_259" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.210000, -20.160000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb259")
+
+[node name="StairStep_260" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.280000, -20.440000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb260")
+
+[node name="StairStep_261" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.350000, -20.720000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb261")
+
+[node name="StairStep_262" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.420000, -21.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb262")
+
+[node name="StairStep_263" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.490000, -21.280000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb263")
+
+[node name="StairStep_264" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.560000, -21.560000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb264")
+
+[node name="StairStep_265" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 0.630000, -21.840000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb265")
+
+[node name="StairRamp" type="StaticBody3D" parent="Entrance"]
+[node name="Shape" type="CollisionShape3D" parent="Entrance/StairRamp"]
+shape = SubResource("StairRamp")
+
+[node name="Landing_266" type="MeshInstance3D" parent="Entrance"]
+position = Vector3(0.000000, 1.200000, -22.700000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+mesh = SubResource("mb266")
+
+[node name="LandingBack_267" type="StaticBody3D" parent="Entrance"]
+position = Vector3(0.000000, 1.700000, -23.500000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/LandingBack_267"]
+mesh = SubResource("mb267")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/LandingBack_267"]
+shape = SubResource("sb267")
+
+[node name="RearCeiling_268" type="StaticBody3D" parent="Entrance"]
+position = Vector3(0.000000, 3.500000, -22.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="Mesh" type="MeshInstance3D" parent="Entrance/RearCeiling_268"]
+mesh = SubResource("mb268")
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/RearCeiling_268"]
+shape = SubResource("sb268")
+
+[node name="DoorFrame_269" parent="Entrance" instance=ExtResource("26")]
+position = Vector3(0.000000, 1.270000, -23.300000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="StairwellExit" type="Node3D" parent="Entrance"]
+position = Vector3(-0.55, 1.27, -23.3)
+script = ExtResource("exit")
+
+[node name="Door_17_270" parent="Entrance/StairwellExit" instance=ExtResource("27")]
+position = Vector3(0.000000, 0.000000, 0.000000)
+rotation = Vector3(0.000000, 0.000000, 0.000000)
+
+[node name="DoorHandle_271" type="StaticBody3D" parent="Entrance/StairwellExit"]
+position = Vector3(0.520000, 1.050000, 0.140000)
+
+[node name="Shape" type="CollisionShape3D" parent="Entrance/StairwellExit/DoorHandle_271"]
+shape = SubResource("s271")
+
+[node name="LandingLight_272" type="OmniLight3D" parent="Lighting"]
+position = Vector3(0.000000, 3.200000, -22.400000)
+light_color = Color(0.65, 0.76, 0.7, 1)
+light_energy = 1.3
+omni_range = 4
+shadow_enabled = true
+shadow_bias = 0.08
+
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+position = Vector3(0, 0.12, 14)
+script = ExtResource("1")
+floor_snap_length = 0.3
+floor_max_angle = 0.65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+position = Vector3(0, 0.875, 0)
+shape = SubResource("PlayerShape")
+
+[node name="Head" type="Node3D" parent="Player"]
+position = Vector3(0, 1.62, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+current = true
+fov = 76.0
+near = 0.04
+far = 120.0
+
+[node name="Flashlight" type="SpotLight3D" parent="Player/Head/Camera3D"]
+position = Vector3(0.16, -0.16, -0.12)
+light_color = Color(0.91, 0.93, 0.79, 1)
+light_energy = 5.0
+spot_range = 18.0
+spot_angle = 34.0
+spot_attenuation = 0.75
+spot_angle_attenuation = 1.4
+shadow_enabled = true
+
+[node name="InteractRay" type="RayCast3D" parent="Player/Head/Camera3D"]
+target_position = Vector3(0, 0, -2.4)
+collision_mask = 1
+

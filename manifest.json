@@ -434,6 +434,222 @@
         0.595,
         0.4
       ]
+    },
+    {
+      "name": "CIS_PanelFacade",
+      "triangles": 168,
+      "bounds_m": [
+        3.0,
+        2.8,
+        0.415
+      ]
+    },
+    {
+      "name": "CIS_GlazedBalcony",
+      "triangles": 552,
+      "bounds_m": [
+        2.85,
+        2.445,
+        1.35
+      ]
+    },
+    {
+      "name": "CIS_EntranceCanopy",
+      "triangles": 356,
+      "bounds_m": [
+        2.4,
+        1.002,
+        1.572
+      ]
+    },
+    {
+      "name": "CIS_Intercom",
+      "triangles": 268,
+      "bounds_m": [
+        0.15,
+        0.3,
+        0.05
+      ]
+    },
+    {
+      "name": "CIS_EntranceDoor",
+      "triangles": 222,
+      "bounds_m": [
+        0.985,
+        2.14,
+        0.2
+      ]
+    },
+    {
+      "name": "CIS_Garage",
+      "triangles": 746,
+      "bounds_m": [
+        3.4,
+        2.575,
+        5.475
+      ]
+    },
+    {
+      "name": "CIS_GarageShell",
+      "triangles": 648,
+      "bounds_m": [
+        3.4,
+        2.575,
+        5.45
+      ]
+    },
+    {
+      "name": "CIS_GarageDoor",
+      "triangles": 98,
+      "bounds_m": [
+        3.14,
+        2.48,
+        0.15
+      ]
+    },
+    {
+      "name": "CIS_GarageDoorLeft",
+      "triangles": 48,
+      "bounds_m": [
+        1.56,
+        2.48,
+        0.15
+      ]
+    },
+    {
+      "name": "CIS_GarageDoorRight",
+      "triangles": 48,
+      "bounds_m": [
+        1.56,
+        2.48,
+        0.15
+      ]
+    },
+    {
+      "name": "CIS_Kiosk",
+      "triangles": 362,
+      "bounds_m": [
+        2.86,
+        2.63,
+        2.275
+      ]
+    },
+    {
+      "name": "CIS_NoticeBoard",
+      "triangles": 62,
+      "bounds_m": [
+        0.925,
+        1.085,
+        0.058
+      ]
+    },
+    {
+      "name": "CIS_Rug",
+      "triangles": 854,
+      "bounds_m": [
+        1.5,
+        0.018,
+        2.395
+      ]
+    },
+    {
+      "name": "CIS_GasStove",
+      "triangles": 604,
+      "bounds_m": [
+        0.6,
+        1.21,
+        0.672
+      ]
+    },
+    {
+      "name": "CIS_EnamelKettle",
+      "triangles": 424,
+      "bounds_m": [
+        0.308,
+        0.322,
+        0.19
+      ]
+    },
+    {
+      "name": "CIS_KitchenStool",
+      "triangles": 108,
+      "bounds_m": [
+        0.34,
+        0.48,
+        0.34
+      ]
+    },
+    {
+      "name": "CIS_Sideboard",
+      "triangles": 204,
+      "bounds_m": [
+        1.6,
+        1.995,
+        0.5
+      ]
+    },
+    {
+      "name": "CIS_OldTelevision",
+      "triangles": 288,
+      "bounds_m": [
+        0.68,
+        0.942,
+        0.436
+      ]
+    },
+    {
+      "name": "CIS_Sandbox",
+      "triangles": 140,
+      "bounds_m": [
+        2.63,
+        0.372,
+        2.63
+      ]
+    },
+    {
+      "name": "CIS_PullUpBars",
+      "triangles": 320,
+      "bounds_m": [
+        2.59,
+        2.275,
+        0.2
+      ]
+    },
+    {
+      "name": "CIS_ConcreteFence",
+      "triangles": 120,
+      "bounds_m": [
+        2.95,
+        2.04,
+        0.26
+      ]
+    },
+    {
+      "name": "CIS_TirePlanter",
+      "triangles": 424,
+      "bounds_m": [
+        0.79,
+        0.4,
+        0.79
+      ]
+    },
+    {
+      "name": "CIS_CourtyardTable",
+      "triangles": 168,
+      "bounds_m": [
+        1.5,
+        0.78,
+        1.7
+      ]
+    },
+    {
+      "name": "CIS_EntrySign",
+      "triangles": 110,
+      "bounds_m": [
+        0.7,
+        0.25,
+        0.032
+      ]
     }
   ]
 }

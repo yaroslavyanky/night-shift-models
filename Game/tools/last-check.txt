@@ -1,0 +1,2 @@
+Godot 4.7.2, macOS Apple Silicon
+MAP CHECK PASSED: scene loading, grass beds, jump, three yard actions, physical route from spawn through open door up the stair, door open/close tween.

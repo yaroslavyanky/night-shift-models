@@ -1,6 +1,6 @@
 {
-  "models": 48,
-  "triangles": 19664,
+  "models": 68,
+  "triangles": 26164,
   "format": "glTF 2.0 binary + OBJ",
   "checks": [
     "GLB chunk and buffer layout",
@@ -31,6 +31,106 @@
     {
       "model": "BusShelter",
       "triangles": 332,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_ConcreteFence",
+      "triangles": 120,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_CourtyardTable",
+      "triangles": 168,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_EnamelKettle",
+      "triangles": 424,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_EntranceCanopy",
+      "triangles": 356,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_EntranceDoor",
+      "triangles": 222,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_EntrySign",
+      "triangles": 110,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_Garage",
+      "triangles": 746,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_GasStove",
+      "triangles": 604,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_GlazedBalcony",
+      "triangles": 552,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_Intercom",
+      "triangles": 268,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_Kiosk",
+      "triangles": 362,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_KitchenStool",
+      "triangles": 108,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_NoticeBoard",
+      "triangles": 62,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_OldTelevision",
+      "triangles": 288,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_PanelFacade",
+      "triangles": 168,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_PullUpBars",
+      "triangles": 320,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_Rug",
+      "triangles": 854,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_Sandbox",
+      "triangles": 140,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_Sideboard",
+      "triangles": 204,
+      "status": "valid"
+    },
+    {
+      "model": "CIS_TirePlanter",
+      "triangles": 424,
       "status": "valid"
     },
     {

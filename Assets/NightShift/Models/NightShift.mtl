@@ -123,3 +123,80 @@ Kd 1 1 1
 Ks 0.05 0.05 0.05
 Ns 8
 map_Kd ../Textures/screen.png
+
+newmtl panel
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/panel.png
+
+newmtl bluepaint
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/bluepaint.png
+
+newmtl ochrepaint
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/ochrepaint.png
+
+newmtl sand
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/sand.png
+
+newmtl enamel
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/enamel.png
+
+newmtl shop_sign
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/shop_sign.png
+
+newmtl address_sign
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/address_sign.png
+
+newmtl entrance_sign
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/entrance_sign.png
+
+newmtl garage_number
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/garage_number.png
+
+newmtl notices
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/notices.png
+
+newmtl carpet
+Ka 0.1 0.1 0.1
+Kd 1 1 1
+Ks 0.05 0.05 0.05
+Ns 8
+map_Kd ../Textures/carpet.png
